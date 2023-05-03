@@ -1,0 +1,93 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+
+    </head>
+	<body>
+		
+		
+		<!-- SECTION -->
+		<div class="section">
+			<!-- container -->
+			<div class="container">
+				<!-- row -->
+				<div class="row">
+
+					
+
+					<!-- Products tab & slick -->
+					<div class="col-md-12">
+						<div class="row">
+							<div class="products-tabs">
+								<!-- tab -->
+								<div id="tab1" class="tab-pane active">
+									<div class="products-slick" data-nav="#slick-nav-1">
+										{% if carts %}
+										{% for i in carts %}
+										<!-- product -->
+										<div class="product">
+											<div class="product-img">
+												<img src="{{i.product.product_image.url}}" alt="" width="150px" height="250px">
+												
+											</div>
+											<div class="product-body">
+												<p class="product-category">{{i.product.product_category}}</p>
+												<h3 class="product-name"><a href="#">{{i.product.product_name}}</a></h3>
+												<h4 class="product-price">{{i.product.product_price}} </h4>
+												<div class="product-rating">
+													<i class="fa fa-star"></i>
+													<i class="fa fa-star"></i>
+													<i class="fa fa-star"></i>
+													<i class="fa fa-star"></i>
+													<i class="fa fa-star"></i>
+												</div>
+												<div class="product-btns">
+													
+													{% if i.product.wishlist_status == False %}
+													<a href="{% url 'add-to-wishlist' pk=i.product.pk %}"><i class="fa fa-heart"></i></a>
+													{% else %}
+														<a href="{% url 'remove-from-wishlist' pk=i.product.pk %}" class="visible" title="Remove From Wishlist"><i class="fa fa-heart" style="color:blue;"></i></a>
+													{% endif %}
+
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													<a href="{% url 'product-details' pk=i.product.pk %}"><i class="fa fa-eye"></i></a>
+												</div>
+											</div>
+											<div class="add-to-cart">
+												{% if i.cart_status == False %}
+													<a href="{% url 'add-to-cart' pk=i.pk %}">
+													<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button></a>
+												{% else %}
+													<a href="{% url 'remove-from-cart' pk=i.pk %}">
+													<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> remove from cart</button></a>
+												{% endif %}
+											</div>
+										</div>
+										<!-- /product -->
+
+										{% endfor %}
+										{% else %}
+											<h1 style="margin-left: -200px;margin-right: -200px;">There is no item in your Cart</h1>
+										{% endif %}
+									</div>
+									<div id="slick-nav-1" class="products-slick-nav"></div>
+								</div>
+								<!-- /tab -->
+							</div>
+						</div>
+					</div>
+					<!-- Products tab & slick -->
+				</div>
+				<!-- /row -->
+			</div>
+			<!-- /container -->
+		</div>
+		<!-- /SECTION -->
+
+	</body>
+</html>
+{% endblock %}

@@ -1,0 +1,133 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		
+    </head>
+	<body>
+		
+		<!-- BREADCRUMB -->
+		<div id="breadcrumb" class="section">
+			<!-- container -->
+			<div class="container">
+				<!-- row -->
+				<div class="row">
+					<div class="col-md-12">
+						<h3 class="breadcrumb-header">Sign Up</h3>
+						<ul class="breadcrumb-tree">
+							<li><a href="#">Home</a></li>
+							<li class="active">Sign Up</li>
+						</ul>
+					</div>
+				</div>
+				<!-- /row -->
+			</div>
+			<!-- /container -->
+		</div>
+		<!-- /BREADCRUMB -->
+
+		<!-- SECTION -->
+		<div class="section">
+			<!-- container -->
+			<div class="container">
+				<!-- row -->
+				<div class="row">
+
+					<div class="col-md-12">
+						<!-- Billing Details -->
+						<div class="billing-details">
+							<div class="section-title">
+								<h3 class="title">User Sign Up</h3>
+							</div>
+							{% if msg %}
+								<b style="color:blue;">{{msg}}</b>
+							{% endif %}
+							<form name="signup" method="post" action="{% url 'signup' %}" enctype="multipart/form-data">
+								{% csrf_token %}
+							<div class="form-group">
+								<select class="input" name="usertype">
+									<option>---Select User Type---</option>
+									<option value="buyer">Buyer</option>
+									<option value="seller">Seller</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<input class="input" type="text" name="fname" placeholder="First Name">
+							</div>
+							<div class="form-group">
+								<input class="input" type="text" name="lname" placeholder="Last Name">
+							</div>
+							<div class="form-group">
+								<input class="input" type="email" name="email" placeholder="Email">
+							</div>
+							<div class="form-group">
+								<input class="input" type="text" name="address" placeholder="Address">
+							</div>
+							<div class="form-group">
+								<input class="input" type="text" name="mobile" placeholder="Mobile">
+							</div>
+							<div class="form-group">
+								<input class="input" type="password" name="password" placeholder="Password">
+							</div>
+							<div class="form-group">
+								<input class="input" type="password" name="cpassword" placeholder="Confirm Password">
+							</div>
+							<div class="form-group">
+								<input class="input" type="file" name="profile_pic">
+							</div>
+							<div class="form-group">
+								<input class="btn btn-primary" type="submit" name="action" value="Sign Up">
+							</div>
+						</div>
+						<!-- /Billing Details -->
+					</div>
+
+					
+				</div>
+				<!-- /row -->
+			</div>
+			<!-- /container -->
+		</div>
+		<!-- /SECTION -->
+
+		<!-- NEWSLETTER -->
+		<div id="newsletter" class="section">
+			<!-- container -->
+			<div class="container">
+				<!-- row -->
+				<div class="row">
+					<div class="col-md-12">
+						<div class="newsletter">
+							<p>Sign Up for the <strong>NEWSLETTER</strong></p>
+							<form>
+								<input class="input" type="email" placeholder="Enter Your Email">
+								<button class="newsletter-btn"><i class="fa fa-envelope"></i> Subscribe</button>
+							</form>
+							<ul class="newsletter-follow">
+								<li>
+									<a href="#"><i class="fa fa-facebook"></i></a>
+								</li>
+								<li>
+									<a href="#"><i class="fa fa-twitter"></i></a>
+								</li>
+								<li>
+									<a href="#"><i class="fa fa-instagram"></i></a>
+								</li>
+								<li>
+									<a href="#"><i class="fa fa-pinterest"></i></a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<!-- /row -->
+			</div>
+			<!-- /container -->
+		</div>
+		<!-- /NEWSLETTER -->
+
+	</body>
+</html>
+{% endblock %}
